@@ -28,3 +28,5 @@ PATHS = {
 }
 
 VERTICAL = "cameras"
+
+MONGO_URI = "mongodb://enit.inf.uniroma3.it:8080/"
