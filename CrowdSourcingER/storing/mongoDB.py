@@ -33,12 +33,12 @@ def get_ground_truth(spark,vertical):
                     .option("uri",config.MONGO_URI+"ground_truth.json_files_"+vertical)\
                     .load())
 
-def expand_ground_truth(spark,new_instance,old_instance,vertical):
+def expand_ground_truth(new_instance,old_instance,vertical):
     db = client.ground_truth
     db["entities_"+vertical].update_one({'instances':{'$elemMatch':{'$eq':old_instance}}},\
                                     {'$addToSet':{'instances':new_instance}})
 
-def expand_ground_false(spark,ljson_id,rjson_id,vertical):
+def expand_ground_false(ljson_id,rjson_id,vertical):
     db = client.ground_false
     db["false_pair_"+vertical].insert_one({'left':ljson_id,'right':rjson_id})
 
