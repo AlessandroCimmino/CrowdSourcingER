@@ -1,5 +1,6 @@
 import json
 import os
+sys.path.append("/home/nvidia/workspace/dbgroup/benchmark/CrowdSourcingER")
 import config
 
 def parse_entites(spark):
