@@ -3,7 +3,7 @@ from pyspark.sql import SparkSession
 from storing import mongoDB as md
 
 spark = SparkSession.builder.appName('bigData')\
-                    .config("spark.mongodb.output.uri","mongodb://localhost:27017/test.MyCollection")\
+                    .config("spark.mongodb.output.uri","mongodb://enit.inf.uniroma3.it:8080/test.MyCollection")\
                     .getOrCreate()
 
 entities_df = gt.parse_entites(spark)
