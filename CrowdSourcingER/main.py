@@ -10,7 +10,7 @@ import pandas
 import config
 
 spark = SparkSession.builder.appName('bigData')\
-                    .config("spark.mongodb.output.uri","mongodb://localhost:27017/test.MyCollection")\
+                    .config("spark.mongodb.output.uri",config.MONGO_URI+"test.MyCollection")\
                     .getOrCreate()
 
 ##########################PREPARAZIONE DATI DI TRAINING###################
