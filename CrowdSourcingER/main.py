@@ -76,11 +76,3 @@ filtered = to_filter[(to_filter['deepmatcher_score'] >= 0.9)\
 
 filtered.to_csv(config.PATHS['oracle_input'],index=False)
 
-oracolo = spark.read.format("csv")\
-  .option("sep", "\t")\
-  .option("inferSchema", "true")\
-  .option("header", "true")\
-  .load("oracolo/true_predictions.csv")\
-  .rdd
-
-print("\n\nPRECISION:"+str(measures.precision(oracolo))+"%\n\n")
