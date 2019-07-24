@@ -3,6 +3,10 @@
 Implementazione di una pipeline iterativa con lo scopo di espandare la ground truth di un dataset di fotocamere
 riconoscendo quali istanze del dataset rappresentano la stessa entità del mondo reale.
 
+Di seguito sono riportate due metodi di esecuzione del progetto.
+Il primo si basa su un esecuzione in locale e quindi prevede l'installazione di tutte le componenti descritte nei pre-requisiti.
+Il secondo descrive un'esecuzione in remoto utilizzando gli ambienti già configurati all'interno dei server Enit e Tesla messi a disposizione dall'Università degli Studi Roma Tre e quindi necessita di password.
+
 ## Esecuzione in locale
 
 ### Pre-requisiti
