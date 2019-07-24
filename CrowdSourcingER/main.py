@@ -8,9 +8,10 @@ from adapter.jedai import gt_to_train as jd
 import os
 import pandas
 import config
+import measures
 
 spark = SparkSession.builder.appName('bigData')\
-                    .config("spark.mongodb.output.uri",config.MONGO_URI+"test.MyCollection")\
+                    .config("spark.mongodb.output.uri",config.MONGO_URI)\
                     .getOrCreate()
 
 ##########################PREPARAZIONE DATI DI TRAINING###################
@@ -73,5 +74,13 @@ filtered = to_filter[(to_filter['deepmatcher_score'] >= 0.9)\
                         & (to_filter['magellan_score'] >=0.9)\
                         & (to_filter['jedai_score'] >=0.9)]
 
-
 filtered.to_csv(config.PATHS['oracle_input'],index=False)
+
+oracolo = spark.read.format("csv")\
+  .option("sep", "\t")\
+  .option("inferSchema", "true")\
+  .option("header", "true")\
+  .load("oracolo/true_predictions.csv")\
+  .rdd
+
+print("\n\nPRECISION:"+str(measures.precision(oracolo))+"%\n\n")
