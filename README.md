@@ -99,6 +99,8 @@ for e in c.*nome_database*.*nome_collezione*.find():
     pprint.pprint(e)
 ```
 
+**Eseguire il comando expand_gt.sh una volta sola per iterazione altrimenti i dati saranno duplicati**
+
 
 
 ## Quick-start Tesla
@@ -199,6 +201,6 @@ import pprint
 for e in c.*nome_database*.*nome_collezione*.find():
     pprint.pprint(e)
 ```
-
+**Eseguire il comando expand_gt.sh una volta sola per iterazione altrimenti i dati saranno duplicati**
 
 
