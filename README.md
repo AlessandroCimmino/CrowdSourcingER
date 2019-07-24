@@ -8,8 +8,8 @@ riconoscendo quali istanze del dataset rappresentano la stessa entità del mondo
 ### Pre-requisiti
 
 - Python 3.6
-- Spark(consigliato 2.3.3)
-- MongoDB(consigliato 4.0.10)
+- Spark (consigliato 2.3.3)
+- MongoDB (consigliato 4.0.10)
 - pymongo
 - pymongo_spark
 - py_entitymatching
@@ -48,7 +48,7 @@ All'interno della cartella principale eseguire il comando
 ```
 sh start.sh
 ```
-**Il processo di predizione può richiedere fino a 2h se non si ha a disposizione una GPU potente.
+**Il processo di predizione può richiedere fino a 2h se non si ha a disposizione una GPU potente.**
 
 Le predizioni effettuate possono essere trovate all'interno della cartella
 ```
