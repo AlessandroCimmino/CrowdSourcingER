@@ -3,7 +3,9 @@
 Implementazione di una pipeline iterativa con lo scopo di espandare la ground truth di un dataset di fotocamere
 riconoscendo quali istanze del dataset rappresentano la stessa entità del mondo reale.
 
-## Pre-requisiti
+## Esecuzione in locale
+
+### Pre-requisiti
 
 - Python 3.6
 - Spark(consigliato 2.3.3)
@@ -13,7 +15,88 @@ riconoscendo quali istanze del dataset rappresentano la stessa entità del mondo
 - py_entitymatching
 - deepmatcher
 
-## Quick-start
+Configurare Spark in modo tale che possa eseguire Python 3.6
+
+Effettuare la connessione di Spark a MongoDB
+
+### Start
+Effetuare l'edit del file conifig andando a specificare nelle variabili sotto riportate l'host e la porta
+sulla quale il demone di MongoDB è in esecuzione
+```
+MONGO_HOST = "enit.inf.uniroma3.it"
+MONGO_PORT = "8080"
+```
+#### Prima esecuzione
+Posizionarsi all'interno della cartella principale ed eseguire il comando
+```
+sh initialize.sh
+```
+
+Per verificare la corretta creazione del database contenente la ground truth eseguire i comandi seguenti
+andando a specificare il corretto uri per la connessione a MongoDB. Il comando dovrebbe mostrare la creazione
+di un database "ground_truth"
+```
+python3
+
+from pymongo import MongoClient
+c = MongoClient("mongodb://enit.inf.uniroma3.it:8080")
+c.list_database_names()
+```
+
+#### Esecuzione di un ciclo
+All'interno della cartella principale eseguire il comando
+```
+sh start.sh
+```
+**Il processo di predizione può richiedere fino a 2h se non si ha a disposizione una GPU potente.
+
+Le predizioni effettuate possono essere trovate all'interno della cartella
+```
+./classifiers/<blackbox>/prediction_files
+```
+Un file per ogni blackbox
+
+#### Oracolo
+Per etichettare le predizioni eseguire il comando
+```
+sh start_oracolo.sh
+```
+Verrà aperto un notebook jupyter nel quale dovrà essere eseguito Oracolo.ipynb.
+
+Una volta etichettate tutte le predizioni cliccare il pulsante save per salvare il file
+```
+./oracolo/true_preditioncs.csv
+```
+**Nota bene: il file può essere salvato solo se vengono etichettate tutte le coppie di istanze**
+
+#### Espandere la ground truth
+Per espandere la ground truth a partire dal file in uscita dall'oracolo eseguire
+```
+sh expand_gt.sh
+```
+Per verificare la corretta esecuzione
+```
+python3
+
+from pymongo import MongoClient
+c = MongoClient("mongodb://enit.inf.uniroma3.it:8080")
+c.list_database_names()
+```
+Verificare che ci siano i database ground_truth e ground_false(contenente le predizioni negative dell'oracolo).
+Per controllare i nomi delle collezioni eseguire il comando
+```
+c.*nome_database*.list_collection_names()
+```
+Per visualizzare gli elementi delle collezioni eseguire
+```
+import pprint
+for e in c.*nome_database*.*nome_collezione*.find():
+    pprint.pprint(e)
+```
+
+
+
+## Quick-start Tesla
 
 Connettersi alla Tesla tramite il comando
 ```
@@ -28,7 +111,7 @@ Posizionarsi all'interno della cartella del progetto
 cd workspace/dbgroup/benchmark/CrowdSourcingER
 ```
 
-## Prima esecuzione
+### Prima esecuzione
 
 Per la prima esecuzione eseguire
 ```
@@ -44,7 +127,7 @@ c = MongoClient("mongodb://enit.inf.uniroma3.it:8080")
 c.list_database_names()
 ```
 
-## Esecuzione di un ciclo
+### Esecuzione di un ciclo
 
 Controllare lo stato delle GPU
 ```
@@ -63,7 +146,7 @@ Le predizioni possono essere trovate all'interno della cartella
 ```
 Un file per ogni blackbox
 
-## Oracolo
+### Oracolo
 Per etichettare le predizioni eseguire il comando
 ```
 sh start_oracolo.sh
@@ -87,7 +170,7 @@ Una volta etichettate tutte le predizioni cliccare il pulsante save per salvare 
 Terminare il processo del notebook sulla Tesla
 
 
-## Espandere la ground truth
+### Espandere la ground truth
 Per espandere la ground truth a partire dal file in uscita dall'oracolo eseguire
 ```
 sh expand_gt.sh
