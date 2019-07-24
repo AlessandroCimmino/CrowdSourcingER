@@ -24,6 +24,9 @@ Configurare Spark in modo tale che possa eseguire Python 3.6.
 Effettuare la connessione di Spark a MongoDB.
 
 ### Start
+
+Scaricare il dataset delle fotocamere e metterlo all'interno della cartella 2013_camera_dataset
+
 Modificare il file config.py specificando nelle variabili di seguito riportate l'host e la porta sulla quale il demone di MongoDB è in esecuzione:
 ```
 MONGO_HOST = "enit.inf.uniroma3.it"
