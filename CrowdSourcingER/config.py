@@ -29,4 +29,6 @@ PATHS = {
 
 VERTICAL = "cameras"
 
-MONGO_URI = "mongodb://enit.inf.uniroma3.it:8080/"
+MONGO_HOST = "localhost"
+MONGO_PORT = 27017
+MONGO_URI = "mongodb://"+MONGO_HOST+":"+str(MONGO_PORT)+"/"
