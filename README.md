@@ -19,12 +19,12 @@ Il secondo descrive un'esecuzione in remoto utilizzando gli ambienti già config
 - py_entitymatching
 - deepmatcher
 
-Configurare Spark in modo tale che possa eseguire Python 3.6
+Configurare Spark in modo tale che possa eseguire Python 3.6.
 
-Effettuare la connessione di Spark a MongoDB
+Effettuare la connessione di Spark a MongoDB.
 
 ### Start
-Effetuare l'edit del file conifig andando a specificare nelle variabili sotto riportate l'host e la porta
+Effetuare l'edit del file config.py andando a specificare nelle variabili sotto riportate l'host e la porta
 sulla quale il demone di MongoDB è in esecuzione
 ```
 MONGO_HOST = "enit.inf.uniroma3.it"
