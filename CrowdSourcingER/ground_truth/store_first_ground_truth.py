@@ -1,9 +1,10 @@
 import parse_ground_truth as gt
 from pyspark.sql import SparkSession
 from storing import mongoDB as md
+import config
 
 spark = SparkSession.builder.appName('bigData')\
-                    .config("spark.mongodb.output.uri","mongodb://enit.inf.uniroma3.it:8080/test.MyCollection")\
+                    .config("spark.mongodb.output.uri",config.MONGO_URI)\
                     .getOrCreate()
 
 entities_df = gt.parse_entites(spark)
