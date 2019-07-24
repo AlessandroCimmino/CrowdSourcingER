@@ -52,7 +52,7 @@ All'interno della cartella principale eseguire il comando:
 ```
 sh start.sh
 ```
-**Il processo di predizione può richiedere fino a 2h se non si ha a disposizione una GPU potente.**
+**Nota bene: il processo di predizione può richiedere fino a 2h se non si ha a disposizione una GPU potente.**
 
 Le predizioni effettuate possono essere trovate all'interno della cartella:
 ```
