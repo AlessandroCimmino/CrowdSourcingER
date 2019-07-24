@@ -22,3 +22,11 @@ def add_features(elem):
     date2=line[8]
     return (line+(calcola_similarita(title1,title2),calcola_similarita(director1,director2),\
     calcola_similarita(date1,date2)),count)
+
+def precision(true):
+    tp = true.map(lambda row:("true",row.response))\
+                .reduceByKey(lambda x,y:x+y)\
+                .collect()[0][1]
+
+    fp = true.filter(lambda row: row.response==0).count()
+    return ((tp/(tp+fp))*100)
