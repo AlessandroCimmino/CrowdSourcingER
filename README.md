@@ -24,8 +24,7 @@ Configurare Spark in modo tale che possa eseguire Python 3.6.
 Effettuare la connessione di Spark a MongoDB.
 
 ### Start
-Effettuare l'edit del file config.py andando a specificare nelle variabili di seguito riportate l'host e la porta
-sulla quale il demone di MongoDB è in esecuzione:
+Modificare il file config.py specificando nelle variabili di seguito riportate l'host e la porta sulla quale il demone di MongoDB è in esecuzione:
 ```
 MONGO_HOST = "enit.inf.uniroma3.it"
 MONGO_PORT = "8080"
@@ -37,8 +36,7 @@ sh initialize.sh
 ```
 
 Per verificare la corretta creazione del database contenente la ground truth eseguire i comandi seguenti
-andando a specificare il corretto URI per la connessione a MongoDB (l'host e la porta specificati nel config.py nel passo precedente). Il comando dovrebbe mostrare la creazione
-di un database "ground_truth".
+specificando il corretto URI per la connessione a MongoDB (l'host e la porta indicati nel config.py nel passo precedente). Il comando dovrebbe mostrare la creazione di un database "ground_truth".
 ```
 python3
 
@@ -65,7 +63,7 @@ Per etichettare le predizioni eseguire il comando:
 ```
 sh start_oracolo.sh
 ```
-Verrà aperto un notebook jupyter nel quale dovrà essere eseguito Oracolo.ipynb.
+Si aprirà un notebook jupyter nel quale dovrà essere eseguito Oracolo.ipynb.
 
 Una volta etichettate tutte le predizioni cliccare il pulsante save per salvare il file nel percorso:
 ```
@@ -78,7 +76,7 @@ Per espandere la ground truth a partire dal file in uscita dall'oracolo eseguire
 ```
 sh expand_gt.sh
 ```
-Per verificare la corretta esecuzione eseguire questi comandi andando a specificare il corretto URI per la connessione a MongoDB (l'host e la porta specificati nel config.py nei passi precedenti):
+Per verificare la corretta esecuzione eseguire questi comandi specificando il corretto URI per la connessione a MongoDB (l'host e la porta indicati nel config.py nei passi precedenti):
 ```
 python3
 
@@ -155,12 +153,12 @@ Per etichettare le predizioni eseguire il comando:
 ```
 sh start_oracolo.sh
 ```
-Verrà avviato un notebook di jupyter con associato un link che apparirà sulla shell.
+Si avvierà un notebook di jupyter con associato un link che apparirà sulla shell.
 ```
 http://localhost:8989/?token=0a8aa13f83e307310006721ad0ffe0b44e90d65465206b37
 ```
 Aprire una nuova shell ed effettuare un port tunneling tramite il seguente comando,
-andando a sostituire il numero delle porte con quello specificato nel link del passo precedente:
+sostituendo il numero delle porte con quello specificato nel link del passo precedente:
 ```
 ssh -N -f -L 8888:localhost:8888 nvidia@tesla.inf.uniroma3.it
 ```
