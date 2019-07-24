@@ -3,7 +3,7 @@ import pymongo_spark
 import config
 
 
-client = MongoClient("enit.inf.uniroma3.it", 8080)
+client = MongoClient(config.MONGO_HOST, config.MONGO_PORT)
 
 def store_datasets(datasets):
     pymongo_spark.activate()
